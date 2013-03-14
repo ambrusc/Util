@@ -121,4 +121,6 @@ alias arqdiff='hg diff --rev qparent -U1000000 -g | arc diff --raw --preview'
 git config --global user.name ambrus
 git config --global user.email ambrus@dropbox.com
 git config --global color.ui auto
-    
+
+# Dropbox
+sshfs -o ambrus-local-dbdev:/ /mnt/dbdev
