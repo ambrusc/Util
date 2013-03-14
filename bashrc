@@ -123,4 +123,8 @@ git config --global user.email ambrus@dropbox.com
 git config --global color.ui auto
 
 # Dropbox
-sshfs -o ambrus-local-dbdev:/ /mnt/dbdev
+if [ ! -d ~/dbdev ]; then
+    mkdir ~/dbdev
+fi
+sshfs ambrus-local-dbdev:/ ~/dbdev
+sudo ln -s ~/dbdev /dbdev
