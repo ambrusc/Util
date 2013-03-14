@@ -41,5 +41,5 @@ sudo apt-get -y install mercurial
 # GIT CONFIG
 git config --global color.ui auto
 
-# SSH
-sudo apt-get -y install sshfs openssh-server
+# SSH, etc
+sudo apt-get -y install sshfs openssh-server curl
