@@ -40,3 +40,6 @@ sudo apt-get -y install mercurial
 
 # GIT CONFIG
 git config --global color.ui auto
+
+# SSHFS
+sudo apt-get -y install sshfs
