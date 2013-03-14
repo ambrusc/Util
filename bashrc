@@ -122,9 +122,16 @@ git config --global user.name ambrus
 git config --global user.email ambrus@dropbox.com
 git config --global color.ui auto
 
-# Dropbox
-if [ ! -d ~/dbdev ]; then
-    mkdir ~/dbdev
+# Dropbox DBDEV
+DBDEV_DIR=dbdev
+if [ ! -d $HOME/$DBDEV_DIR ]; then
+    mkdir $HOME/$DBDEV_DIR
 fi
-sshfs ambrus-local-dbdev:/ ~/dbdev
-sudo ln -s ~/dbdev /dbdev
+if [ "$(ls -A $HOME/$DBDEV_DIR)" ]; then
+    echo "dbdev already mounted"
+else
+    sshfs ambrus-local-dbdev:/ $HOME/$DBDEV_DIR
+fi
+if [ ! -L /$DBDEV_DIR ]; then
+    sudo ln -s $HOME/$DBDEV_DIR /$DBDEV_DIR
+fi
