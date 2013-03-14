@@ -6,12 +6,11 @@ function do_link {
         then
         rm "$1"
     fi
-    ln -s "$2" "$1"
+    $3 ln -s "$2" "$1"
 }
 
 
 # SUBLIME
-
 SUBLIME_CONFIG="Preferences.sublime-settings
 Package Control.last-run
 Package Control.sublime-settings
@@ -26,6 +25,8 @@ do
 done
 IFS=$IFS_OLD
 
+do_link "/usr/local/bin/sublime_text" "$( pwd )/sublimetext2/sublime_text" "sudo"
+
 # HOME CONFIG
 do_link "$HOME/.bashrc" "$( pwd )/bashrc"
 do_link "$HOME/.hgrc" "$( pwd )/hgrc"
@@ -36,3 +37,6 @@ easy_install pip
 
 # HG
 sudo apt-get -y install mercurial
+
+# GIT CONFIG
+git config --global color.ui auto
